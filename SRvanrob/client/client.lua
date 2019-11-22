@@ -70,7 +70,7 @@ end
 Citizen.CreateThread(function()
 	---for k,v in pairs(Stores)do
 	--	local ve = v.position
-
+if Config.ShowshopBlip then
 		local blip = AddBlipForCoord(-624.33, -232.44,38.6)
 		SetBlipSprite(blip, 439)
 		SetBlipScale(blip, 0.8)
@@ -78,6 +78,7 @@ Citizen.CreateThread(function()
 		BeginTextCommandSetBlipName("STRING")
 		AddTextComponentString(_U('shop_robbery'))
 		EndTextCommandSetBlipName(blip)
+		end
 if Config.SellBlip == true then
 		local blip2 = AddBlipForCoord(ConfigSellPos.x,ConfigSellPos.y,ConfigSellPos.z)
 		SetBlipSprite(blip2, Config.Blip)
