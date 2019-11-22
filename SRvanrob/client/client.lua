@@ -2,21 +2,35 @@ local holdingup = false
 local store = ""
 local blipRobbery = nil
 local isRobbing = false
-
+local canceltimer = GetGameTimer()
 ESX = nil
-
+ 
+ 
+ 
+ 
 	Citizen.CreateThread(function()
+	if Config.policecontrol == true then 
 		while true do
-			Citizen.Wait(100)
+			Citizen.Wait(3000)
 			local playerId = PlayerId()
 			if isRobbing == false then
 			if GetPlayerWantedLevel(playerId) ~= 0 then
 				SetPlayerWantedLevel(playerId, 0, false)
 				SetPlayerWantedLevelNow(playerId, false)
 			end
+			else
+if GetGameTimer() - canceltimer > Config.policereset*1000*60 then
+isRobbing = false
+end			
+
+			 
+		end
 		end
 		end
 	end)
+
+
+
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -354,9 +368,13 @@ TriggerServerEvent('srvanrob:cabinet',cabinetno)
 								ClearPedTasks(GetPlayerPed(-1))									
 local chance = math.random(1,100)
 if chance < Config.alarmchance  then
+
                 TriggerEvent('esx:showNotification',  _U('alarm_triggered'))
+				
 				if Config.AIpoliceon == true then
 			TriggerServerEvent('srvanrob:setwanted')
+isRobbing = true
+print("isRobbing",isRobbing)	
 			end
 if Config.sendpolicealert == true then
 local Bpos = {}
@@ -422,7 +440,7 @@ AddEventHandler('srvanrob:setwanted', function()
 if GetPlayerWantedLevel(PlayerId()) < Config.Wantedlevel then
 				SetPlayerWantedLevel(PlayerId(), Config.Wantedlevel, false)
 				SetPlayerWantedLevelNow(PlayerId(),true)
-				 isRobbing = true
+				 
 end
 end)
 
