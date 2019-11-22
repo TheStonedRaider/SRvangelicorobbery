@@ -11,5 +11,5 @@ Locales['en'] = {
 	['notenoughgold'] = '~r~We only buy in batches of Ten!',
 	['goldsell'] = '~y~Jewels~s~ sale in progress',
 	['jewelsblipmap'] = 'Jewels',
-
+	['collectinprogress'] = 'Getting jewles',
 }
