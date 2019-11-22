@@ -6,7 +6,7 @@ Config.Locale = 'en'
 --- Alarm / refresh timer 
 Config.smashtimer = 4000    ------ In MS how long it takes to smash and rob each cabinet
 
-Config.alarmchance = 130  --------- 0 - %100 How likely the alarm will go off for EACH broken cabinet 
+Config.alarmchance = 30  --------- 0 - %100 How likely the alarm will go off for EACH broken cabinet 
 
 Config.resettimer = 30 ----------- In Minuets how long until the shop is refilled after being robbed.
 
