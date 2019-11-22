@@ -22,7 +22,7 @@ Config.Wantedlevel = 3     ------- wanted level given when alarm
 
 Config.policecontrol = true ------   Disable wanted level --- deactivates police when you are not robbing the store
 
-Config.policereset = 1 		----- In Minuets how long until police are called off
+Config.policereset = 5 		----- In Minuets how long until police are called off
  --Selling 
 ConfigSellPos.x,ConfigSellPos.y,ConfigSellPos.z =  707.39,-965.23,30.41         ------ Coords of sell circle
 
