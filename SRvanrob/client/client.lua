@@ -1,8 +1,22 @@
 local holdingup = false
 local store = ""
 local blipRobbery = nil
+local isRobbing = false
 
 ESX = nil
+
+	Citizen.CreateThread(function()
+		while true do
+			Citizen.Wait(100)
+			local playerId = PlayerId()
+			if isRobbing == false then
+			if GetPlayerWantedLevel(playerId) ~= 0 then
+				SetPlayerWantedLevel(playerId, 0, false)
+				SetPlayerWantedLevelNow(playerId, false)
+			end
+		end
+		end
+	end)
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -407,7 +421,8 @@ RegisterNetEvent('srvanrob:setwanted')
 AddEventHandler('srvanrob:setwanted', function()
 if GetPlayerWantedLevel(PlayerId()) < Config.Wantedlevel then
 				SetPlayerWantedLevel(PlayerId(), Config.Wantedlevel, false)
-				SetPlayerWantedLevelNow(PlayerId(),true)				
+				SetPlayerWantedLevelNow(PlayerId(),true)
+				 isRobbing = true
 end
 end)
 
