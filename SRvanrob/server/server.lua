@@ -259,11 +259,13 @@ AddEventHandler('srvanrob:selljewles', function()
    xPlayer.removeInventoryItem('jewels',10)	
    	if Config.mopolicemomoney == true then 
 	local SellPrice = CopsConnected * Config.Copextra
-   		xPlayer.addMoney(SellPrice)		   
+   		xPlayer.addMoney(Config.SellPrice)
+		TriggerClientEvent('esx:showNotification', _source, 'recived $'..Config.SellPrice..'')			
 				else
 			xPlayer.addMoney(Config.SellPrice)
+			TriggerClientEvent('esx:showNotification', _source, 'recived $'..Config.SellPrice..'')	
 	end			
-	TriggerClientEvent('esx:showNotification', _source, 'recived $'..Config.SellPrice..'')	
+
 	else
 		TriggerClientEvent('esx:showNotification', _source, _U('notenoughgold'))
 	end
